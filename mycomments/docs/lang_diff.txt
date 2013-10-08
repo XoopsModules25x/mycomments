@@ -1,0 +1,16 @@
+LANGUAGE DIFFERENCES
+=====================
+
+Below are language differences from a version to next version.
+
+Legend :
++ Added
+- Removed
+* Modified
+x renamed
+
+---------------------------------------
+1.01 Beta 1  2012-07-30
+---------------------------------------
+
+New file to translate :
