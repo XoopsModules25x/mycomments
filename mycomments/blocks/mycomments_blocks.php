@@ -59,14 +59,15 @@ function b_mycomments_show($options)
         $block['comments'][] =& $com;
         unset($com);
     }
+
     return $block;
 }
-
 
 function b_mycomments_edit($options)
 {
     $inputtag = "<input type='text' name='options[]' value='".intval($options[0])."' />";
     $form = sprintf(_MB_MYCOM_DISPLAYC, $inputtag);
+
     return $form;
 }
 
@@ -143,6 +144,7 @@ function b_mycomments2_show($options)
         }
         unset($com);
     }
+
     return $block;
 }
 
@@ -150,6 +152,6 @@ function b_mycomments2_edit($options)
 {
     $inputtag = "<input type='text' name='options[]' value='".intval($options[0])."' />";
     $form = sprintf(_MB_MYCOM_DISPLAYC, $inputtag);
+
     return $form;
 }
-?>

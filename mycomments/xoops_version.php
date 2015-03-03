@@ -52,7 +52,6 @@ $i++;
 $modversion['templates'][$i]['file'] = "mycomments_navigation.html";
 $modversion['templates'][$i]['description'] = '';
 
-
 // Blocks
 $i=0;$i++;
 $modversion['blocks'][$i]['file'] = "mycomments_blocks.php";
@@ -72,7 +71,6 @@ $modversion['blocks'][$i]['edit_func'] = "b_mycomments2_edit";
 $modversion['blocks'][$i]['options'] = "10";
 $modversion['blocks'][$i]['template'] = "mycomments_block_comments.html";
 
-
 //Menu
 $i = 0;
 global $xoopsUser;
@@ -86,7 +84,6 @@ if (is_object($xoopsUser)) {
     $modversion['sub'][$i]['url'] = "index.php?view=1";
 }
 
-
 //Configs
 $i=0;
 /**
@@ -99,7 +96,7 @@ $modversion['config'][$i]['description'] = '_MI_MYCOM_NAMEDISPLAY_DSC';
 $modversion['config'][$i]['formtype'] = 'select';
 $modversion['config'][$i]['valuetype'] = 'int';
 $modversion['config'][$i]['default'] = 1;
-$modversion['config'][$i]['options']	= array('_MI_MYCOM_DISPLAYNAME1' => 1, '_MI_MYCOM_DISPLAYNAME2' => 2);
+$modversion['config'][$i]['options']    = array('_MI_MYCOM_DISPLAYNAME1' => 1, '_MI_MYCOM_DISPLAYNAME2' => 2);
 
 /**
  * Number of coments per page ?

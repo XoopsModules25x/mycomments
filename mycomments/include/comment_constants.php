@@ -12,4 +12,3 @@ define('MYCOM_ACTIVE', 2);
 define('MYCOM_HIDDEN', 3);
 define('MYCOM_OLD1ST', 0);
 define('MYCOM_NEW1ST', 1);
-?>

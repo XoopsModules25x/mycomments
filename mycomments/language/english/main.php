@@ -46,4 +46,3 @@ define("_MA_MYCOM_COM_RECIEVED","Comments Received");
 define("_MA_MYCOM_COM_SENT","Comments Sent");
 define("_MA_MYCOM_NCOMMENTS","%s comments");
 define("_MA_MYCOM_NCOMMENT","%s comment");
-?>

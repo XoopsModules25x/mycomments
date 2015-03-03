@@ -19,9 +19,9 @@ class MycommentsCommentRenderer {
     /**
      * Constructor
      *
-     * @param   object  &$tpl
-     * @param   boolean $use_icons
-     * @param   boolean $do_iconcheck
+     * @param object  &$tpl
+     * @param boolean $use_icons
+     * @param boolean $do_iconcheck
      **/
     function MycommentsCommentRenderer(&$tpl, $use_icons = true, $do_iconcheck = false)
     {
@@ -35,9 +35,9 @@ class MycommentsCommentRenderer {
     /**
      * Access the only instance of this class
      *
-     * @param   object  $tpl        reference to a {@link Smarty} object
-     * @param   boolean $use_icons
-     * @param   boolean $do_iconcheck
+     * @param object  $tpl          reference to a {@link Smarty} object
+     * @param boolean $use_icons
+     * @param boolean $do_iconcheck
      * @return
      **/
     function &instance(&$tpl, $use_icons = true, $do_iconcheck = false)
@@ -46,13 +46,14 @@ class MycommentsCommentRenderer {
         if (!isset($instance)) {
             $instance = new MycommentsCommentRenderer($tpl, $use_icons, $do_iconcheck);
         }
+
         return $instance;
     }
 
     /**
      * Accessor
      *
-     * @param   object  &$comments_arr  array of {@link XoopsComment} objects
+     * @param object &$comments_arr array of {@link XoopsComment} objects
      **/
     function setComments(&$comments_arr)
     {
@@ -109,8 +110,8 @@ class MycommentsCommentRenderer {
     /**
      * Get the name of the poster
      *
-     * @param   int $poster_id
-     * @return  string
+     * @param  int    $poster_id
+     * @return string
      *
      * @access	private
      **/
@@ -121,19 +122,21 @@ class MycommentsCommentRenderer {
             $com_poster =& $this->_memberHandler->getUser($poster_id);
             if (is_object($com_poster)) {
                 $poster['uname'] = '<a href="'.XOOPS_URL.'/userinfo.php?uid='.$poster['id'].'">'.$com_poster->getVar('uname').'</a>';
+
                 return $poster;
             }
         }
         $poster['id'] = 0; // to cope with deleted user accounts
         $poster['uname'] = $GLOBALS['xoopsConfig']['anonymous'];
+
         return $poster;
     }
 
     /**
      * Get an array with info about the poster
      *
-     * @param   int $poster_id
-     * @return  array
+     * @param  int   $poster_id
+     * @return array
      *
      * @access	private
      **/
@@ -152,6 +155,7 @@ class MycommentsCommentRenderer {
                 $poster['from'] = $com_poster->getVar('user_from');
                 $poster['postnum'] = $com_poster->getVar('posts');
                 $poster['status'] = $com_poster->isOnline() ? _MA_MYCOM_ONLINE : '';
+
                 return $poster;
             }
         }
@@ -163,14 +167,15 @@ class MycommentsCommentRenderer {
         $poster['from'] = '';
         $poster['postnum'] = 0;
         $poster['status'] = '';
+
         return $poster;
     }
 
     /**
      * Get the IMG tag for the title icon
      *
-     * @param   string  $icon_image
-     * @return  string  HTML IMG tag
+     * @param  string $icon_image
+     * @return string HTML IMG tag
      *
      * @access	private
      **/
@@ -188,15 +193,16 @@ class MycommentsCommentRenderer {
                 return '<img src="'.XOOPS_URL.'/images/subject/'.$icon_image.'" alt="" />';
             }
         }
+
         return '<img src="'.XOOPS_URL.'/images/icons/no_posticon.gif" alt="" />';
     }
 
     /**
      * Get Text with Signature
      *
-     * @param   string  $text
-     * @param   int  $uid
-     * @return  string
+     * @param  string $text
+     * @param  int    $uid
+     * @return string
      *
      * @access	private
      **/
@@ -217,8 +223,8 @@ class MycommentsCommentRenderer {
                 $text .= "<p><br />_________________<br />". $poster->user_sig()."</p>";
             }
         }
+
         return $text;
     }
 
 }
-?>

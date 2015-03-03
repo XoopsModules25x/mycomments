@@ -65,5 +65,3 @@ function webshow_iteminfo($items, $limit=0, $offset=0){
 
     return $ret;
 }
-
-?>

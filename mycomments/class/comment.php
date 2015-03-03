@@ -72,7 +72,7 @@ class MycommentsComment extends XoopsObject
     /**
      * Is this comment on the root level?
      *
-     * @return  bool
+     * @return bool
      **/
     function isRoot()
     {
@@ -99,9 +99,9 @@ class MycommentsCommentHandler extends XoopsObjectHandler
     /**
      * Create a {@link XoopsComment}
      *
-     * @param	bool    $isNew  Flag the object as "new"?
+     * @param bool $isNew Flag the object as "new"?
      *
-     * @return	object
+     * @return object
      */
     function &create($isNew = true)
     {
@@ -109,15 +109,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         if ($isNew) {
             $comment->setNew();
         }
+
         return $comment;
     }
 
     /**
      * Retrieve a {@link XoopsComment}
      *
-     * @param   int $id ID
+     * @param int $id ID
      *
-     * @return  object  {@link XoopsComment}, FALSE on fail
+     * @return object {@link XoopsComment}, FALSE on fail
      **/
     function &get($id)
     {
@@ -134,15 +135,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
                 $comment->assignVars($this->db->fetchArray($result));
             }
         }
+
         return $comment;
     }
 
     /**
      * Write a comment to database
      *
-     * @param   object  &$comment
+     * @param object &$comment
      *
-     * @return  bool
+     * @return bool
      **/
     function insert(&$comment)
     {
@@ -171,15 +173,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
             $com_id = $this->db->getInsertId();
         }
         $comment->assignVar('com_id', $com_id);
+
         return true;
     }
 
     /**
      * Delete a {@link XoopsComment} from the database
      *
-     * @param   object  &$comment
+     * @param object &$comment
      *
-     * @return  bool
+     * @return bool
      **/
     function delete(&$comment)
     {
@@ -190,16 +193,17 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         if (!$result = $this->db->query($sql)) {
             return false;
         }
+
         return true;
     }
 
     /**
      * Get some {@link XoopsComment}s
      *
-     * @param   object  $criteria
-     * @param   bool    $id_as_key  Use IDs as keys into the array?
+     * @param object $criteria
+     * @param bool   $id_as_key Use IDs as keys into the array?
      *
-     * @return  array   Array of {@link XoopsComment} objects
+     * @return array Array of {@link XoopsComment} objects
      **/
     function getObjects($criteria = null, $id_as_key = false)
     {
@@ -228,15 +232,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
             }
             unset($comment);
         }
+
         return $ret;
     }
 
     /**
      * Count Comments
      *
-     * @param   object  $criteria   {@link CriteriaElement}
+     * @param object $criteria {@link CriteriaElement}
      *
-     * @return  int     Count
+     * @return int Count
      **/
     function getCount($criteria = null)
     {
@@ -248,15 +253,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
             return 0;
         }
         list($count) = $this->db->fetchRow($result);
+
         return $count;
     }
 
     /**
      * Delete multiple comments
      *
-     * @param   object  $criteria   {@link CriteriaElement}
+     * @param object $criteria {@link CriteriaElement}
      *
-     * @return  bool
+     * @return bool
      **/
     function deleteAll($criteria = null)
     {
@@ -267,15 +273,16 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         if (!$result = $this->db->query($sql)) {
             return false;
         }
+
         return true;
     }
 
     /**
      * Get a list of comments
      *
-     * @param   object  $criteria   {@link CriteriaElement}
+     * @param object $criteria {@link CriteriaElement}
      *
-     * @return  array   Array of raw database records
+     * @return array Array of raw database records
      **/
     function getList($criteria = null)
     {
@@ -284,20 +291,21 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         foreach (array_keys($comments) as $i) {
             $ret[$i] = $comments[$i]->getVar('com_title');
         }
+
         return $ret;
     }
 
     /**
      * Retrieves comments for an item
      *
-     * @param   int     $module_id  Module ID
-     * @param   int     $item_id    Item ID
-     * @param   string  $order      Sort order
-     * @param   int     $status     Status of the comment
-     * @param   int     $limit      Max num of comments to retrieve
-     * @param   int     $start      Start offset
+     * @param int    $module_id Module ID
+     * @param int    $item_id   Item ID
+     * @param string $order     Sort order
+     * @param int    $status    Status of the comment
+     * @param int    $limit     Max num of comments to retrieve
+     * @param int    $start     Start offset
      *
-     * @return  array   Array of {@link XoopsComment} objects
+     * @return array Array of {@link XoopsComment} objects
      **/
     function getByItemId($module_id, $item_id, $order = null, $status = null, $limit = null, $start = 0)
     {
@@ -313,17 +321,18 @@ class MycommentsCommentHandler extends XoopsObjectHandler
             $criteria->setLimit($limit);
             $criteria->setStart($start);
         }
+
         return $this->getObjects($criteria);
     }
 
     /**
      * Gets total number of comments for an item
      *
-     * @param   int     $module_id  Module ID
-     * @param   int     $item_id    Item ID
-     * @param   int     $status     Status of the comment
+     * @param int $module_id Module ID
+     * @param int $item_id   Item ID
+     * @param int $status    Status of the comment
      *
-     * @return  array   Array of {@link XoopsComment} objects
+     * @return array Array of {@link XoopsComment} objects
      **/
     function getCountByItemId($module_id, $item_id, $status = null)
     {
@@ -332,19 +341,19 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         if (isset($status)) {
             $criteria->add(new Criteria('com_status', intval($status)));
         }
+
         return $this->getCount($criteria);
     }
-
 
     /**
      * Get the top {@link XoopsComment}s
      *
-     * @param   int     $module_id
-     * @param   int     $item_id
-     * @param   strint  $order
-     * @param   int     $status
+     * @param int    $module_id
+     * @param int    $item_id
+     * @param strint $order
+     * @param int    $status
      *
-     * @return  array   Array of {@link XoopsComment} objects
+     * @return array Array of {@link XoopsComment} objects
      **/
     function getTopComments($module_id, $item_id, $order, $status = null)
     {
@@ -355,17 +364,18 @@ class MycommentsCommentHandler extends XoopsObjectHandler
             $criteria->add(new Criteria('com_status', intval($status)));
         }
         $criteria->setOrder($order);
+
         return $this->getObjects($criteria);
     }
 
     /**
      * Retrieve a whole thread
      *
-     * @param   int     $comment_rootid
-     * @param   int     $comment_id
-     * @param   int     $status
+     * @param int $comment_rootid
+     * @param int $comment_id
+     * @param int $status
      *
-     * @return  array   Array of {@link XoopsComment} objects
+     * @return array Array of {@link XoopsComment} objects
      **/
     function getThread($comment_rootid, $comment_id, $status = null)
     {
@@ -374,30 +384,32 @@ class MycommentsCommentHandler extends XoopsObjectHandler
         if (isset($status)) {
             $criteria->add(new Criteria('com_status', intval($status)));
         }
+
         return $this->getObjects($criteria);
     }
 
     /**
      * Update
      *
-     * @param   object  &$comment       {@link XoopsComment} object
-     * @param   string  $field_name     Name of the field
-     * @param   mixed   $field_value    Value to write
+     * @param object &$comment    {@link XoopsComment} object
+     * @param string $field_name  Name of the field
+     * @param mixed  $field_value Value to write
      *
-     * @return  bool
+     * @return bool
      **/
     function updateByField(&$comment, $field_name, $field_value)
     {
         $comment->unsetNew();
         $comment->setVar($field_name, $field_value);
+
         return $this->insert($comment);
     }
 
     /**
      * Delete all comments for one whole module
      *
-     * @param   int $module_id  ID of the module
-     * @return  bool
+     * @param  int  $module_id ID of the module
+     * @return bool
      **/
     function deleteByModule($module_id)
     {
@@ -407,11 +419,11 @@ class MycommentsCommentHandler extends XoopsObjectHandler
     /**
      * Change a value in multiple comments
      *
-     * @param   string  $fieldname  Name of the field
-     * @param   string  $fieldvalue Value to write
-     * @param   object  $criteria   {@link CriteriaElement}
+     * @param string $fieldname  Name of the field
+     * @param string $fieldvalue Value to write
+     * @param object $criteria   {@link CriteriaElement}
      *
-     * @return  bool
+     * @return bool
      **/
     /*
      function updateAll($fieldname, $fieldvalue, $criteria = null)
@@ -428,4 +440,3 @@ class MycommentsCommentHandler extends XoopsObjectHandler
      }
      */
 }
-?>

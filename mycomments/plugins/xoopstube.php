@@ -19,6 +19,7 @@ function xoopstube_useritems($uid, $limit=0, $offset=0){
             $ret[] = $row['lid'];
         }
     }
+
     return $ret;
 }
 
@@ -60,7 +61,6 @@ function xoopstube_iteminfo($items, $limit=0, $offset=0)
         $xcodes = 1;
         $ret[$i]['description'] = $myts->displayTarea($row['description'], $html, $smiley, $xcodes);
     }
+
     return $ret;
 }
-
-?>
