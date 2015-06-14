@@ -113,5 +113,3 @@ function mycomments_advanced_search($queryarray, $andor, $limit, $offset, $useri
 
     return $ret;
 }
-
-?>
