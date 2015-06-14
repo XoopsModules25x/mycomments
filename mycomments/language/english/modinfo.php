@@ -18,4 +18,3 @@ define("_MI_MYCOM_DISPLAYNAME1","User name");
 define("_MI_MYCOM_DISPLAYNAME2","Real name");
 define("_MI_MYCOM_COMNUM","Comments per page");
 define("_MI_MYCOM_COMNUM_DSC","Set the default number of comments per page");
-?>

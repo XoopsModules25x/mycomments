@@ -38,11 +38,11 @@ include_once XOOPS_ROOT_PATH.'/header.php';
 $thisuser = new XoopsUser($uid);
 
 switch($xoopsModuleConfig['displayname']) {
-    case 1:		// Username
+    case 1:        // Username
         $username = $thisuser->getVar('uname');
         break;
 
-    case 2:		// Display full name (if it is not empty)
+    case 2:        // Display full name (if it is not empty)
         if(xoops_trim($thisuser->getVar('name')) == '') {
             $username = $thisuser->getVar('uname');
         } else {
@@ -57,7 +57,6 @@ if (is_object($xoopsUser) && $xoopsUser->isAdmin($xoopsModule->getVar('mid'))) {
 } else {
     $admin_view = false;
 }
-
 
 $module_handler =& xoops_gethandler('module');
 $comments_handler =& xoops_getmodulehandler('comment');
@@ -141,7 +140,6 @@ $xoopsTpl->assign(array(
     'lang_notice' => _MA_MYCOM_NOTICE)
 );
 
-
 //For the navbar, get all modules that have plugins
 
 $mod_array = array();
@@ -172,7 +170,6 @@ foreach($mod_array as $key=>$value) {
     $mod_options .= '<option value="'.$key.'"'.$sel.'>'.$value.'</option>';
 }
 $xoopsTpl->assign('mod_options', $mod_options);
-
 
 $view_options = '';
 foreach($view_array as $key=>$value) {
@@ -213,4 +210,3 @@ $xoopsTpl->assign('user_name','<a href="'.XOOPS_URL.'/userinfo.php?uid='.$uid.'"
 $xoopsTpl->assign('lang_home',_MA_MYCOM_HOME);
 
 include_once XOOPS_ROOT_PATH.'/footer.php';
-?>

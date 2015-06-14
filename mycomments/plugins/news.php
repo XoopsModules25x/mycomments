@@ -15,6 +15,7 @@ function news_useritems($uid, $limit=0, $offset=0)
             $ret[] = $row['storyid'];
         }
     }
+
     return $ret;
 }
 
@@ -61,5 +62,3 @@ function news_iteminfo($items, $limit=0, $offset=0)
 
     return $ret;
 }
-
-?>

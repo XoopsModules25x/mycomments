@@ -15,6 +15,7 @@ function publisher_useritems($uid, $limit=0, $offset=0)
             $ret[] = $row['itemid'];
         }
     }
+
     return $ret;
 }
 
@@ -60,7 +61,6 @@ function publisher_iteminfo($items, $limit=0, $offset=0)
     return $ret;
 }
 
-
 /*
  function news_data($limit=0, $offset=0)
  {
@@ -84,5 +84,4 @@ function publisher_iteminfo($items, $limit=0, $offset=0)
 
  return $ret;
  }
- */
-?>
+ */;

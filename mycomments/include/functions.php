@@ -41,23 +41,23 @@ function mycomments_get_plugin_info( $dirname , $func = 'useritems' )
     if( file_exists( $module_plugin_file ) ) {
         // module side (1st priority)
         $ret = array(
-			'plugin_path' => $module_plugin_file ,
-			'func' => $dirname.'_'.$func ,
-			'type' => 'module' ,
+            'plugin_path' => $module_plugin_file ,
+            'func' => $dirname.'_'.$func ,
+            'type' => 'module' ,
         ) ;
     } else if( ! empty( $mytrustdirname ) && file_exists( $d3module_plugin_file ) ) {
         // D3 module's plugin under xoops_trust_path (2nd priority)
         $ret = array(
-			'plugin_path' => $d3module_plugin_file ,
-			'func' => $mytrustdirname.'_'.$func ,
-			'type' => 'module (D3)' ,
+            'plugin_path' => $d3module_plugin_file ,
+            'func' => $mytrustdirname.'_'.$func ,
+            'type' => 'module (D3)' ,
         ) ;
     } else if( file_exists( $builtin_plugin_file ) ) {
         // built-in plugin under modules/mycomments (3rd priority)
         $ret = array(
-			'plugin_path' => $builtin_plugin_file ,
-			'func' => $dirname.'_'.$func ,
-			'type' => 'built-in' ,
+            'plugin_path' => $builtin_plugin_file ,
+            'func' => $dirname.'_'.$func ,
+            'type' => 'built-in' ,
         ) ;
     } else {
         $ret = array() ;
@@ -97,7 +97,6 @@ function mycomments_advanced_search($queryarray, $andor, $limit, $offset, $useri
     $module_handler =& xoops_gethandler('module');
     $modules =& $module_handler->getObjects(new Criteria('hascomments', 1), true);
 
-
     $ret = array();
     $i = 0;
     while($myrow = $xoopsDB->fetchArray($result)){
@@ -111,8 +110,6 @@ function mycomments_advanced_search($queryarray, $andor, $limit, $offset, $useri
         }
         unset($comment);
     }
+
     return $ret;
 }
-
-?>
-

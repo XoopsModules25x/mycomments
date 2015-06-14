@@ -61,7 +61,6 @@ function mylinks_iteminfo($items, $limit=0, $offset=0){
         $ret[$i]['description'] = $myts->displayTarea($row['description'], $html, $smiley, $xcodes);
         $i++;
     }
+
     return $ret;
 }
-
-?>

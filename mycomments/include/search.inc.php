@@ -51,7 +51,6 @@ function mycomments_search($queryarray, $andor, $limit, $offset, $userid){
         $ret[$i]['uid'] = $myrow['com_uid'];
         $i++;
     }
+
     return $ret;
 }
-
-?>
