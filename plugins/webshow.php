@@ -55,7 +55,7 @@ function webshow_iteminfo($items, $limit=0, $offset=0){
         // comments
         $ret[$i]['replies'] = $row['comments'];
         // description
-        $myts =& MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
         $html   = 1;
         $smiley = 1;
         $xcodes = 1;

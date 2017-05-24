@@ -95,7 +95,7 @@ function mycomments_advanced_search($queryarray, $andor, $limit, $offset, $useri
     $result = $xoopsDB->query($sql,$limit,$offset);
 
     $module_handler =& xoops_gethandler('module');
-    $modules =& $module_handler->getObjects(new Criteria('hascomments', 1), true);
+    $modules = $module_handler->getObjects(new Criteria('hascomments', 1), true);
 
     $ret = array();
     $i = 0;
