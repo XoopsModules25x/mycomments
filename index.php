@@ -31,7 +31,7 @@ if ($uid == 0) {
     exit();
 }
 
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 $xoopsOption['template_main'] = 'mycomments_comments.html';
 include_once XOOPS_ROOT_PATH.'/header.php';
 
@@ -63,7 +63,7 @@ $comments_handler =& xoops_getmodulehandler('comment');
 
 $criteria = new CriteriaCompo(new Criteria('hascomments', 1));
 if ($mid > 0) $criteria->add(new Criteria('mid', $mid), 'AND');
-$modules =& $module_handler->getObjects($criteria, true);
+$modules = $module_handler->getObjects($criteria, true);
 unset($criteria);
 
 $criteria = new CriteriaCompo();
@@ -108,7 +108,7 @@ $criteria->setOrder('DESC');
 $criteria->setLimit($limit);
 $criteria->setStart($start);
 
-$comments =& $comments_handler->getObjects($criteria);
+$comments = $comments_handler->getObjects($criteria);
 $com_count =& $comments_handler->getCount($criteria);
 $renderer =& MycommentsCommentRenderer::instance($xoopsTpl);
 $renderer->setComments($comments);
@@ -145,7 +145,7 @@ $xoopsTpl->assign(array(
 $mod_array = array();
 //Lets save a query, if no $mid is set then we already have $modules correctly populated
 if ($mid > 0){
-    $modules =& $module_handler->getObjects(new Criteria('hascomments', 1), true);
+    $modules = $module_handler->getObjects(new Criteria('hascomments', 1), true);
 }
 
 foreach( $modules as $moduleid => $module ) {
